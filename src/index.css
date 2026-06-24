@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Crimson Pro", serif;
+  --font-sans: "Instrument Sans", sans-serif;
+
+  --color-teal-deep: #1B4D45;
+  --color-teal-mid: #2A6B60;
+  --color-teal-faint: #9FD4CB;
+  --color-warm-paper: #F5F0E8;
+  --color-cream: #EDE8DF;
+  --color-warm-ink: #1B2B26;
+  --color-coral: #E8593C;
+  --color-coral-pale: #FAE9E5;
+}
+
+@layer base {
+  body {
+    @apply bg-warm-paper text-warm-ink font-sans antialiased selection:bg-teal-faint selection:text-teal-deep;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, var(--color-teal-deep) 0%, var(--color-warm-ink) 100%);
+}
+
+.gradient-stats {
+  background: linear-gradient(to bottom, var(--color-teal-mid) 0%, var(--color-cream) 100%);
+}
+
+.gradient-paper {
+  background: linear-gradient(to bottom, var(--color-cream) 0%, var(--color-warm-paper) 100%);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+@keyframes gradient-pulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-pulse 15s ease infinite;
+}
+
+/* Custom Scrollbar for the Chat */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: #9FD4CB;
+  border-radius: 10px;
+}
