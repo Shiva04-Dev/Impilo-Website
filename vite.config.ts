@@ -11,6 +11,12 @@ const __dirname = path.dirname(__filename);
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), viteSingleFile()],
+  server: {
+    proxy: {
+      // Forward chat requests to the Impilo backend during `npm run dev` (avoids CORS)
+      "/demo": "http://localhost:3000",
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
