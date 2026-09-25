@@ -1,10 +1,18 @@
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 import { cn } from '../utils/cn';
 
 export const Navbar = () => {
   const location = useLocation();
-  
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close the mobile menu after navigating
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -59,7 +67,42 @@ export const Navbar = () => {
         </Link>
       </div>
       
-      {/* Mobile Menu could be added here, but staying simple for now */}
+      <button
+        type="button"
+        className="md:hidden p-2 -mr-2"
+        onClick={() => setMenuOpen((open) => !open)}
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-menu"
+      >
+        {menuOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+
+      {menuOpen && (
+        <div
+          id="mobile-menu"
+          className="md:hidden absolute top-full left-4 right-4 rounded-2xl bg-teal-deep text-white shadow-2xl p-4 flex flex-col"
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={cn(
+                "px-4 py-3 rounded-xl text-base font-medium transition-colors hover:bg-white/10",
+                location.pathname === link.path ? "bg-white/10" : "opacity-80"
+              )}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <Link
+            to="/try-it"
+            className="mt-2 px-4 py-3 rounded-full text-center font-bold bg-coral text-white"
+          >
+            Try Impilo
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };

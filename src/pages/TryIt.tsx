@@ -38,11 +38,13 @@ function WebChat() {
   const [busy, setBusy] = useState(false);
   const [typing, setTyping] = useState(false);
   const nextId = useRef(0);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const userId = useRef(getUserId());
 
+  // Scroll only the chat container; scrollIntoView would also scroll the whole page
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = scrollRef.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
   }, [messages, typing]);
 
   const add = (from: Msg['from'], text: string) =>
@@ -113,7 +115,7 @@ function WebChat() {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-4 py-5 space-y-3">
+        <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-5 space-y-3">
           {messages.length === 0 && !typing && (
             <p className="text-center text-sm text-warm-ink/50 mt-8">
               Say hi in English, Afrikaans or isiZulu to start.
@@ -146,7 +148,6 @@ function WebChat() {
               </div>
             </div>
           )}
-          <div ref={bottomRef} />
         </div>
 
         <p className="px-4 py-1.5 text-center text-[11px] text-warm-ink/40 bg-warm-paper">

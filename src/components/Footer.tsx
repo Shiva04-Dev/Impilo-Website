@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Phone } from 'lucide-react';
 
 export const Footer = () => {
@@ -14,11 +15,11 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-xs uppercase tracking-widest text-teal-deep font-bold">Navigation</h4>
             <nav className="flex flex-col space-y-2">
-              <a href="/" className="text-teal-mid hover:text-coral transition-colors">Home</a>
-              <a href="/about" className="text-teal-mid hover:text-coral transition-colors">About</a>
-              <a href="/how-it-works" className="text-teal-mid hover:text-coral transition-colors">How It Works</a>
-              <a href="/try-it" className="text-teal-mid hover:text-coral transition-colors">Try It</a>
-              <a href="/contact" className="text-teal-mid hover:text-coral transition-colors">Contact</a>
+              <Link to="/" className="text-teal-mid hover:text-coral transition-colors">Home</Link>
+              <Link to="/about" className="text-teal-mid hover:text-coral transition-colors">About</Link>
+              <Link to="/how-it-works" className="text-teal-mid hover:text-coral transition-colors">How It Works</Link>
+              <Link to="/try-it" className="text-teal-mid hover:text-coral transition-colors">Try It</Link>
+              <Link to="/contact" className="text-teal-mid hover:text-coral transition-colors">Contact</Link>
             </nav>
           </div>
           <div className="space-y-4">

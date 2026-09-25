@@ -1,7 +1,8 @@
 {
   "rewrites": [
     { "source": "/demo/:path*", "destination": "https://impilo-backend.onrender.com/demo/:path*" },
-    { "source": "/healthz", "destination": "https://impilo-backend.onrender.com/healthz" }
+    { "source": "/healthz", "destination": "https://impilo-backend.onrender.com/healthz" },
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
