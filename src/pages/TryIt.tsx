@@ -149,6 +149,10 @@ function WebChat() {
           <div ref={bottomRef} />
         </div>
 
+        <p className="px-4 py-1.5 text-center text-[11px] text-warm-ink/40 bg-warm-paper">
+          This chat is only private on this device. Tap "New chat" before you leave a shared computer.
+        </p>
+
         <div className="border-t border-cream bg-white px-3 py-3 flex items-end gap-2">
           <textarea
             value={input}
