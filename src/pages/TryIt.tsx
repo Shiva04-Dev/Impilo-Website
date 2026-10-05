@@ -105,14 +105,23 @@ function WebChat() {
               <span>Private & Anonymous · Web test chat</span>
             </div>
           </div>
-          <button
-            onClick={newChat}
-            disabled={busy}
-            className="flex items-center gap-1.5 text-sm text-teal-faint hover:text-white disabled:opacity-40 transition-colors"
-            title="Clear history and start again"
-          >
-            <RotateCcw size={16} /> New chat
-          </button>
+          <div className="flex items-center gap-4">
+            <a
+              href={WHATSAPP_URL}
+              className="flex items-center gap-1.5 text-sm text-teal-faint hover:text-white transition-colors"
+              title="Continue on WhatsApp"
+            >
+              <MessageSquareText size={16} /> WhatsApp
+            </a>
+            <button
+              onClick={newChat}
+              disabled={busy}
+              className="flex items-center gap-1.5 text-sm text-teal-faint hover:text-white disabled:opacity-40 transition-colors"
+              title="Clear history and start again"
+            >
+              <RotateCcw size={16} /> New chat
+            </button>
+          </div>
         </div>
 
         <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-5 space-y-3">
